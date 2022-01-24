@@ -6,8 +6,8 @@ export class Player extends Component {
     return (
       <div className='App'>
         <PlayWidget
-          width={300}
-          height={380}
+          width='100%'
+          height={260}
           uri={'https://open.spotify.com/playlist/7EXWjR31cQzw6OP1atmo3A?si=7cd56c62b8ac4ab7'}
           lightTheme={true}
         />
