@@ -4,15 +4,16 @@ import TopPlaylist from '../components/dasboard/TopPlaylist';
 
 function Accueil() {
   return <div>
-    <h1>Accueil</h1>
     <div className='container'>
-        <div className='row'>
-            <div className="card text-dark bg-light col-md-8 m-2">
-                <div className="card-header">Graph</div>
-                <div className="card-body">
+        <div className='row mt-5'>
+            <div className='col-md-8 m-2'>
+                <div className="card text-dark bg-light" style={{height: "100%"}}>
+                    <div className="card-header">Header</div>
+                    <div className="card-body">
+                    </div>
                 </div>
             </div>
-            <div className="mb-3 col-md m-2">
+            <div className="col-md m-2">
                 <div>
                     <Player></Player>
                 </div>
