@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -8,7 +9,8 @@ import Playlist from "./pages/Playlist";
 
 
 function App() {
-  return (
+  return(
+  
     <div className="App">
       <head>
         <meta charset="utf-8"/>
@@ -19,20 +21,18 @@ function App() {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       </head>
-          
-      <div>
-        <NavBar/>
-        <Accueil/>
-      </div>
+
+        <Router>
+          <NavBar/>
+          <Routes>
+            <Route exact path="/" element={<Accueil/>}/>
+            <Route exact path="/playlist" element={<Playlist/>}/>
+          </Routes>
+        </Router>  
     </div>
   );
 }
 
 export default App;
 
-/*<Router>
-          <Route path="/" exact component={Accueil}/>
-          <Route path="/playlist" exact component={Playlist}/>
-          <Route path="/detail" exact component={DetailMusic} />
-          <Footer/>
-        </Router>  */
+/*  */
