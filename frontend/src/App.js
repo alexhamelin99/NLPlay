@@ -28,6 +28,7 @@ function App() {
             <Route exact path="/" element={<Accueil/>}/>
             <Route exact path="/playlist" element={<Playlist/>}/>
           </Routes>
+          <Footer/>
         </Router>  
     </div>
   );

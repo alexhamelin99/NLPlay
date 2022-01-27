@@ -1,0 +1,14 @@
+.playlist:hover {
+    height: 215px;
+    width: 335px;
+}
+
+.row a {
+    text-decoration: none;
+    color: black;
+}
+
+.row a:hover {
+    text-decoration: none;
+    color: black;
+}
