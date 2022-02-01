@@ -34,18 +34,42 @@ input:focus {
 }
 
 .dataResult {
-    width: 600;
-    height: 200;
+    margin-top: 15px;
+    box-shadow: 2px 2px 7px rgb(153, 153, 153);
+    z-index: 1;
+    position: absolute;
+    width: 590px;
+    height: 200px;
     background-color: white;
-    box-shadow: grey;
-    overflow: hidden;
+    overflow: visible;
     overflow-y: auto;
 }
 
-.dataResult:focus::-webkit-scrollbar {
+.dataResult::-webkit-scrollbar {
     display: none;
 }
 
+.dataResult .dataItem{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
 .dataItem p{
-    margin-left: 20px;
+    margin-left: 30px;
+    align-items: center;
+} 
+
+a {
+    text-decoration: none;
+}
+
+.dataItem:hover {
+    background-color: lightgrey;
+}
+
+#clearBtn {
+    cursor: pointer;
 }

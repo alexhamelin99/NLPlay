@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
@@ -6,9 +6,12 @@ import Footer from "./components/Footer";
 import Accueil from "./pages/Accueil";
 import DetailMusic from "./pages/DetailMusic";
 import Playlist from "./pages/Playlist";
+import { MusicContext } from "./pages/UserContext";
 
 
 function App() {
+  const [music, setMusic] = useState(null);
+
   return(
   
     <div className="App">
@@ -23,12 +26,14 @@ function App() {
       </head>
 
         <Router>
-          <NavBar/>
-          <Routes>
-            <Route exact path="/" element={<Accueil/>}/>
-            <Route exact path="/playlist" element={<Playlist/>}/>
-          </Routes>
-          <Footer/>
+          <MusicContext.Provider value={{music, setMusic}}>
+            <NavBar/>
+                <Routes>
+                    <Route exact path="/" element={<Accueil/>}/>
+                    <Route exact path="/playlist" element={<Playlist/>}/>
+                </Routes>
+            <Footer/>
+          </MusicContext.Provider>
         </Router>  
     </div>
   );

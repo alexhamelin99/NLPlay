@@ -1,15 +1,23 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect,Component } from 'react';
 import { NavLink} from 'react-router-dom';
 
 import './Navbar.css';
 import logo from '../images/logo.png';
 import SearchBar from './SearchBar';
 
+import axios from "axios";
 
 
 
-export class NavBar extends Component {
-  render() {
+function NavBar () {
+    const [music, setMusic] = useState(null);
+
+    useEffect(() => {
+        axios.get("http://127.0.0.1:8080/").then((response) => {
+              setMusic(response.data);
+        });
+      }, []);
+      
     return <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-dark">
             <div className="container-fluid">
@@ -27,13 +35,13 @@ export class NavBar extends Component {
                         </li>
                     </ul>
                     <form className="d-flex">
-                        <SearchBar placeholder="Entrer une musique"/>
+                        <SearchBar placeholder="Entrer une musique" data={music}/>
                     </form>
                 </div>
             </div>
         </nav>
     </div>
-    }
 }
+
 
 export default NavBar;

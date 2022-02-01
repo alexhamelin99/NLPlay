@@ -13,6 +13,8 @@ import {
   } from 'chart.js';
 import {Scatter } from 'react-chartjs-2';
 
+import "./GraphAPI.css"
+
 import axios from "axios";
 
 const cors = require('cors');
@@ -28,7 +30,7 @@ ChartJS.register(
 
 
 
-const GraphAPI = () => {
+function GraphAPI () {
 
  
   const graph1=[];
@@ -91,7 +93,7 @@ const GraphAPI = () => {
           type: 'scatter',
           label: `${graph1?.length} Musique Disponible`,
           labels:label1,
-         /* data: [{
+          /*data: [{
               x: -10,
               y: 0
             }, {
@@ -212,7 +214,6 @@ const GraphAPI = () => {
     }
 
   return( <div className='Music'>
-      <h1> {graph[1].song_name} </h1>
       <Scatter
       data={data}
       height={200}
