@@ -1,6 +1,6 @@
 //import React from 'react';
 
-import React, { useState, useEffect, Component } from 'react'
+import React, { useState, useEffect, Component, useContext } from 'react'
 //import { Chart as ChartJS, BarElement, CategoryScale,LinearScale,} from 'chart.js'
 
 import {
@@ -18,6 +18,7 @@ import {
   import zoomPlugin from "chartjs-plugin-zoom";
   import axios from "axios";
   import './GraphAPI.css'
+import { MusicContext } from '../../pages/UserContext';
 
 const cors = require('cors');
 const app = cors();
@@ -34,6 +35,13 @@ ChartJS.register(
 
 const GraphAPI = () => {
 
+  const {music, setMusic} = useContext(MusicContext);
+
+  const handleClick = (event) => {
+    const value = event.target;
+    console.log(value);
+    setMusic(value);
+  }
 
   const graph1 = [];
   const graph2 = [];
@@ -245,6 +253,7 @@ const GraphAPI = () => {
               <Scatter
                 data={data}
                 options={options}
+                onClick={(event) => handleClick(event)}
               />
             </div>
 
