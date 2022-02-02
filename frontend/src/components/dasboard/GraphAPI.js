@@ -1,8 +1,8 @@
 //import React from 'react';
 
-import React, { useState, useEffect, Component, useContext } from 'react'
+import React, { useState, useEffect, Component,useContext } from 'react'
 //import { Chart as ChartJS, BarElement, CategoryScale,LinearScale,} from 'chart.js'
-
+import { MusicContext } from '../../pages/UserContext';
 import {
   Chart as ChartJS,
   LinearScale,
@@ -18,10 +18,11 @@ import {
   import zoomPlugin from "chartjs-plugin-zoom";
   import axios from "axios";
   import './GraphAPI.css'
-import { MusicContext } from '../../pages/UserContext';
 
 const cors = require('cors');
 const app = cors();
+
+
 
 
 ChartJS.register(
@@ -36,12 +37,6 @@ ChartJS.register(
 const GraphAPI = () => {
 
   const {music, setMusic} = useContext(MusicContext);
-
-  const handleClick = (event) => {
-    const value = event.target;
-    console.log(value);
-    setMusic(value);
-  }
 
   const graph1 = [];
   const graph2 = [];
@@ -73,7 +68,7 @@ const GraphAPI = () => {
 
 
   if (!graph) return null;
-  else console.log(graph[1].x);
+  //else console.log(graph[1].x);
   //console.log(Xcoo[1]);
 
 
@@ -98,6 +93,7 @@ const GraphAPI = () => {
 
     son: songname,
     
+    
     datasets: [{
 
       type: 'scatter',
@@ -120,18 +116,18 @@ const GraphAPI = () => {
       data: graph1.map(e => ({ x: e.x, y: e.y })),
       //data:[graph?.map(x => x.x),graph?.map(y=>y.y)],
       //data:{x:graph?.map(x => x.x),y:graph?.map(y => y.y)},
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132,.0.5)',
-      borderWidth: 1,
+      borderColor: '#3c3c3c',
+      backgroundColor: '#25B33D',
+      borderWidth: 0.2,
 
     }, {
       type: 'scatter',
       labels: graph.song_name,
       label: `Un message`,
       data: graph2.map(e => ({ x: e.x, y: e.y })),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(10, 48, 171, 0.5)',
-      borderWidth: 1,
+      borderColor: '#3c3c3c',
+      backgroundColor: '#3B5998',
+      borderWidth: 0.2,
 
     }
 
@@ -140,9 +136,9 @@ const GraphAPI = () => {
       labels: label3,
       label: `Prise de conscience`,
       data: graph3.map(e => ({ x: e.x, y: e.y })),
-      borderColor: 'rgb(231, 239, 16)',
-      backgroundColor: 'rgba(231, 239, 16, 0.5)',
-      borderWidth: 1,
+      borderColor: '#3c3c3c',
+      backgroundColor: '#efd807',
+      borderWidth: 0.2,
 
     }
       , {
@@ -150,9 +146,9 @@ const GraphAPI = () => {
       label: `Festif`,
       labels: label4,
       data: graph4.map(e => ({ x: e.x, y: e.y })),
-      borderColor: 'rgb(186, 27, 235)',
-      backgroundColor: 'rgba(186, 27, 235, 0.5)',
-      borderWidth: 1,
+      borderColor: '#3c3c3c',
+      backgroundColor: '#ff8300',
+      borderWidth: 0.2,
 
     }
       , {
@@ -160,9 +156,9 @@ const GraphAPI = () => {
       label: `Amour`,
       labels: label5,
       data: graph5.map(e => ({ x: e.x, y: e.y })),
-      borderColor: 'rgb(235, 159, 27)',
-      backgroundColor: 'rgba(235, 159, 27, 0.5)',
-      borderWidth: 1,
+      borderColor: '#3c3c3c',
+      backgroundColor: '#ff0000',
+      borderWidth: 0.2,
 
     }
       , {
@@ -170,9 +166,9 @@ const GraphAPI = () => {
       label: `Description de personnes`,
       labels: label6,
       data: graph6.map(e => ({ x: e.x, y: e.y })),
-      borderColor: 'rgb(132, 59, 59)',
-      backgroundColor: 'rgba(132, 59, 59, 0.5)',
-      borderWidth: 1,
+      borderColor: '#3c3c3c',
+      backgroundColor: '#B10DC9',
+      borderWidth: 0.2,
 
     }
 
@@ -182,6 +178,9 @@ const GraphAPI = () => {
   }
   
   var options = {
+
+
+   /*events: ["click", "mouseout"],*/
 
     plugins: {
       zoom: {
@@ -207,7 +206,7 @@ const GraphAPI = () => {
           label: function(context,tooltipItem, data) {
            let label = songname[context.dataIndex];
 
-            console.log(label[8]);
+          //  console.log(label[8]);
 
             if (label) {
                 label +=' de ' + graph[context.dataIndex].artist_name;
