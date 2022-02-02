@@ -68,17 +68,15 @@ const GraphAPI = () => {
 
 
   if (!graph) return null;
-  //else console.log(graph[1].x);
-  //console.log(Xcoo[1]);
 
 
   for (var i = 0; i < graph.length; i++) {
-    if (graph[i].lda_main_topic === "topic_1") { graph1.push(graph[i]) && label1.push(graph[i].song_name) }
-    else if (graph[i].lda_main_topic === "topic_2") { graph2.push(graph[i]) && label2.push(graph[i].song_name) }
-    else if (graph[i].lda_main_topic === "topic_3") { graph3.push(graph[i]) && label3.push(graph[i].song_name) }
-    else if (graph[i].lda_main_topic === "topic_4") { graph4.push(graph[i]) && label4.push(graph[i].song_name) }
-    else if (graph[i].lda_main_topic === "topic_5") { graph5.push(graph[i]) && label5.push(graph[i].song_name) }
-    else if (graph[i].lda_main_topic === "topic_6") { graph6.push(graph[i]) && label6.push(graph[i].song_name) }
+    if (graph[i].lda_main_topic === "topic_1") { graph1.push(graph[i]) }
+    else if (graph[i].lda_main_topic === "topic_2") { graph2.push(graph[i])}
+    else if (graph[i].lda_main_topic === "topic_3") { graph3.push(graph[i])}
+    else if (graph[i].lda_main_topic === "topic_4") { graph4.push(graph[i])}
+    else if (graph[i].lda_main_topic === "topic_5") { graph5.push(graph[i])}
+    else if (graph[i].lda_main_topic === "topic_6") { graph6.push(graph[i])}
 
   }
 
@@ -99,30 +97,15 @@ const GraphAPI = () => {
       type: 'scatter',
       
       label: `Un bel endroit`,
-      labels: label1,
-      /* data: [{
-           x: -10,
-           y: 0
-         }, {
-           x: 0,
-           y: 10
-         }, {
-           x: 10,
-           y: 5
-         }, {
-           x: 0.5,
-           y: 5.5
-         }],*/
+      labels: graph1.song_name,
       data: graph1.map(e => ({ x: e.x, y: e.y })),
-      //data:[graph?.map(x => x.x),graph?.map(y=>y.y)],
-      //data:{x:graph?.map(x => x.x),y:graph?.map(y => y.y)},
       borderColor: '#3c3c3c',
       backgroundColor: '#25B33D',
       borderWidth: 0.2,
 
     }, {
       type: 'scatter',
-      labels: graph.song_name,
+      labels: graph2.song_name,
       label: `Un message`,
       data: graph2.map(e => ({ x: e.x, y: e.y })),
       borderColor: '#3c3c3c',
@@ -133,7 +116,7 @@ const GraphAPI = () => {
 
       , {
       type: 'scatter',
-      labels: label3,
+      labels: graph3.song_name,
       label: `Prise de conscience`,
       data: graph3.map(e => ({ x: e.x, y: e.y })),
       borderColor: '#3c3c3c',
@@ -144,7 +127,7 @@ const GraphAPI = () => {
       , {
       type: 'scatter',
       label: `Festif`,
-      labels: label4,
+      labels: graph4.song_name,
       data: graph4.map(e => ({ x: e.x, y: e.y })),
       borderColor: '#3c3c3c',
       backgroundColor: '#ff8300',
@@ -154,7 +137,7 @@ const GraphAPI = () => {
       , {
       type: 'scatter',
       label: `Amour`,
-      labels: label5,
+      labels: graph5.song_name,
       data: graph5.map(e => ({ x: e.x, y: e.y })),
       borderColor: '#3c3c3c',
       backgroundColor: '#ff0000',
@@ -164,7 +147,7 @@ const GraphAPI = () => {
       , {
       type: 'scatter',
       label: `Description de personnes`,
-      labels: label6,
+      labels: graph6.song_name,
       data: graph6.map(e => ({ x: e.x, y: e.y })),
       borderColor: '#3c3c3c',
       backgroundColor: '#B10DC9',
@@ -199,27 +182,36 @@ const GraphAPI = () => {
         }
       },
       tooltip: {
-
-
         callbacks: {
 
-          label: function(context,tooltipItem, data) {
-           let label = songname[context.dataIndex];
-
-          //  console.log(label[8]);
-
-            if (label) {
-                label +=' de ' + graph[context.dataIndex].artist_name;
+          label: (data) => {
+            
+            if (data.datasetIndex === 0) {
+              const value = graph1[data.dataIndex].song_name + " de " + graph1[data.dataIndex].artist_name
+              return value
             }
-
-            return label;
+            else if (data.datasetIndex === 1) {
+              const value = graph2[data.dataIndex].song_name + " de " + graph2[data.dataIndex].artist_name
+              return value
+            }
+            else if (data.datasetIndex === 2) {
+              const value = graph3[data.dataIndex].song_name + " de " + graph3[data.dataIndex].artist_name
+              return value
+            }
+            else if (data.datasetIndex === 3) {
+              const value = graph4[data.dataIndex].song_name + " de " + graph4[data.dataIndex].artist_name
+              return value
+            }
+            else if (data.datasetIndex === 4) {
+              const value = graph5[data.dataIndex].song_name + " de " + graph5[data.dataIndex].artist_name
+              return value
+            }
+            else if (data.datasetIndex === 5) {
+              const value = graph6[data.dataIndex].song_name + " de " + graph6[data.dataIndex].artist_name
+              return value
+            }
+         }
         }
- 
-          
-
-        }
-
-
       }
     },
 
