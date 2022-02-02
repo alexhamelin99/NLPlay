@@ -34,6 +34,7 @@ function SearchBar({placeholder, data}) {
   const handleClick = (value) => {
     setFilter([]);
     setWord("");
+    console.log(value);
     setMusic(value);
   }
 

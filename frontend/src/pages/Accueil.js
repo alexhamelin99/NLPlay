@@ -5,6 +5,10 @@ import GraphAPI from '../components/dasboard/GraphAPI';
 import Footer from '../components/Footer';
 import './Accueil.css';
 import { MusicContext } from './UserContext';
+import { Pie } from 'react-chartjs-2';
+
+import {Chart, ArcElement} from 'chart.js'
+Chart.register(ArcElement);
 
 
 
@@ -12,6 +16,18 @@ import { MusicContext } from './UserContext';
 function Accueil() {
     const {music, setMusic} = useContext(MusicContext);
     
+    const data = {
+        maintainAspectRatio: true,
+        responsive: true,
+        datasets: [
+          {
+            data: [music.topic_1*100, music.topic_2*100, music.topic_3*100, music.topic_4*100, music.topic_5*100, music.topic_6*100],
+            backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B", "#7FDBFF", "#B10DC9"],
+          }
+        ]
+      };
+
+
   return <div>
     <div className='container'>
         <div className='row mt-3' >
@@ -29,16 +45,22 @@ function Accueil() {
                             Info Musique
                         </div>
                         <div className='card-body'>
-                            {music != null ? 
-                                <div>
-                                    <h5>{music.song_name}</h5>
+                            {music != 0 ? 
+                                <div >
+                                    <h5>{music.song_name}, {music.artist_name} ({music.release_date})</h5>
+                                    <div className='pie'>
+                                        <Pie
+                                            data={data}
+                                        />
+                                    </div>
+                                    
                                 </div>
                                 :
                                 <h5>Aucune musique n'est actuellement recherchée...</h5>
                             }
                         </div>
                     </div>
-                    <div className='player'> 
+                    <div className='player' > 
                         <Player width="100%" height='250' url="https://open.spotify.com/playlist/40xjbm7u6nOuZHpzPvJIv6?si=9469de50480347b7"/>
                     </div>
             </div> 

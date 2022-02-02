@@ -10,7 +10,7 @@ import { MusicContext } from "./pages/UserContext";
 
 
 function App() {
-  const [music, setMusic] = useState(null);
+  const [music, setMusic] = useState([0]);
 
   return(
   
