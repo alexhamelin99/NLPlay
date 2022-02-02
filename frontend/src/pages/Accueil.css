@@ -13,3 +13,7 @@
     align-items: center;
     margin-left: 75px;
 }
+
+#container {
+    flex:1,
+}

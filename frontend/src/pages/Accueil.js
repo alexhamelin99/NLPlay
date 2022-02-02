@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import './Accueil.css';
 import { MusicContext } from './UserContext';
 import { Pie } from 'react-chartjs-2';
+import FullHeight from "react-full-height";
 
 import {Chart, ArcElement} from 'chart.js'
 Chart.register(ArcElement);
@@ -47,10 +48,10 @@ function Accueil() {
     }
 
   return <div>
-    <div className='container'>
+    <div className='container-fluid' >
         <div className='row mt-3' >
             <div className='col-md-8 m-2' >
-                <div className="card text-dark bg-light">
+                <div className="card text-dark bg-light" style={{height: "100%"}}>
                     <div className="card-header">Graph</div>
                     <div className="card-body">
                         <GraphAPI/>
@@ -85,7 +86,6 @@ function Accueil() {
             </div> 
         </div>
     </div>
-    <Footer/>
   </div>;
 }
 

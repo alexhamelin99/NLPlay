@@ -183,8 +183,6 @@ const GraphAPI = () => {
   
   var options = {
 
-   /*events: ["click", "mouseout"],*/
-
     plugins: {
       zoom: {
         limits: { y: { min: -100, max: 100, maxRange: 200, minRange: 5 }, x: { min: -100, max: 100, maxRange: 200, minRange: 5 } },
@@ -253,7 +251,6 @@ const GraphAPI = () => {
               <Scatter
                 data={data}
                 options={options}
-                onClick={(event) => handleClick(event)}
               />
             </div>
 
