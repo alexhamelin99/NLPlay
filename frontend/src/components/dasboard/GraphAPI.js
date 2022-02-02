@@ -38,6 +38,39 @@ const GraphAPI = () => {
 
   const {music, setMusic} = useContext(MusicContext);
 
+  const handleClick = (data) => {
+      if (data.datasetIndex === 0) {
+        const value = graph1[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+      else if (data.datasetIndex === 1) {
+        const value = graph2[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+      else if (data.datasetIndex === 2) {
+        const value = graph3[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+      else if (data.datasetIndex === 3) {
+        const value = graph4[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+      else if (data.datasetIndex === 4) {
+        const value = graph5[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+      else if (data.datasetIndex === 5) {
+        const value = graph6[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+  }
+
   const graph1 = [];
   const graph2 = [];
   const graph3 = [];
@@ -162,8 +195,37 @@ const GraphAPI = () => {
   
   var options = {
 
-
-   /*events: ["click", "mouseout"],*/
+    onClick: (data) => {
+      if (data.datasetIndex === 0) {
+        console.log(graph1[data.dataIndex])
+        setMusic(graph1[data.dataIndex])
+      }
+      else if (data.datasetIndex === 1) {
+        const value = graph2[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+      else if (data.datasetIndex === 2) {
+        const value = graph3[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+      else if (data.datasetIndex === 3) {
+        const value = graph4[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+      else if (data.datasetIndex === 4) {
+        const value = graph5[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+      else if (data.datasetIndex === 5) {
+        const value = graph6[data.dataIndex]
+        console.log(value)
+        setMusic(value)
+      }
+  },
 
     plugins: {
       zoom: {
@@ -242,6 +304,7 @@ const GraphAPI = () => {
               <Scatter
                 data={data}
                 options={options}
+                onClick={handleClick}
               />
             </div>
 
