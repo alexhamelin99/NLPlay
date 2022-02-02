@@ -22,30 +22,25 @@ function Accueil() {
         responsive: true,
         datasets: [
           {
-            data: [Math.round(music.topic_1*100), Math.round(music.topic_2*100), Math.round(music.topic_3*100), Math.round(music.topic_4*100), Math.round(music.topic_5*100), Math.round(music.topic_6*100)],
+            data: [music.topic_1*100, music.topic_2*100, music.topic_3*100, music.topic_4*100, music.topic_5*100, music.topic_6*100],
             backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B", "#7FDBFF", "#B10DC9"],
           }
         ]
       };
 
-    var option = {
+      var options = {
         plugins: {
-            tooltip: {
-                callbacks: {
+        tooltip:{
+        callbacks:{
+            label: (data) => { 
+                return Math.round(data.parsed) +"%"
+          }
 
-                    label: function(context,tooltipItem, data) {
-                     let label = context.topic_1;
-          
-                      if (label) {
-                          label +='%';
-                      }
-          
-                      return label;
-                  }
-                }
-            }
         }
-    }
+        }
+        }
+      }
+
 
   return <div>
     <div className='container-fluid' >
@@ -70,7 +65,7 @@ function Accueil() {
                                     <div className='pie'>
                                         <Pie
                                             data={data}
-                                            options={option}
+                                            options={options}
                                         />
                                     </div>
                                     
