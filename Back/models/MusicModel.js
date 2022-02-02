@@ -64,7 +64,7 @@ const MusicModel = mongoose.model(
         required:false
       },
     },
-    "Music"
+    "NewMusic"
   );
 
   module.exports = {MusicModel};

@@ -23,7 +23,7 @@ function Accueil() {
         datasets: [
           {
             data: [music.topic_1*100, music.topic_2*100, music.topic_3*100, music.topic_4*100, music.topic_5*100, music.topic_6*100],
-            backgroundColor: ["#0074D9", "#FF4136", "#2ECC40", "#FF851B", "#7FDBFF", "#B10DC9"],
+            backgroundColor: ["#25B33D", "#3B5998", "#efd807", "#ff8300", "#ff0000", "#B10DC9"],
           }
         ]
       };
